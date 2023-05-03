@@ -1,0 +1,20 @@
+<div class="car-container" *ngIf="cars">
+<div class="item" *ngFor="let car of cars">
+  <img src="{{car.image}}" class="image">
+  <div class="text">
+    <h1>{{car.brand}}</h1>
+    <h2>{{car.type}}</h2>
+    <h2>{{car.fuel}}</h2>
+    <div >
+      <button class="delete"
+      (click)="deleteCar(car.id)">
+        Delete
+      </button>
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+

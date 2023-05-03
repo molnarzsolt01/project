@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { CrudComponent } from './crud/crud.component';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -10,9 +9,4 @@ import { MatDialog } from '@angular/material/dialog';
 export class AppComponent {
   title = 'app';
 
-  constructor(private _dialog: MatDialog) { }
-
-  openCrud() {
-    this._dialog.open(CrudComponent);
-  }
 }
