@@ -1,6 +1,7 @@
-export interface CarModel{
+export interface CarModel {
   "id": number,
   "brand": string,
   "type": string,
   "fuel": string
+  "image?": File
 }

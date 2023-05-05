@@ -1,41 +1,24 @@
-<div mat-dialog-title>
-  <h1>Add new car</h1>
-</div>
+<form color="primary">
+  <div>
+  <label for="brand">Brand:</label>
+  <input type="text" id="brand" name="brand" class="brand" [(ngModel)]="carModel.brand" required>
 
-<form >
-  <div mat-dialog-content class="content">
-    <div class = "row">
-      <mat-form-field appearance="fill">
-        <mat-label>Cars</mat-label>
-        <input type="text" formControlCars = "Cars">
-        <select matNativeControl required >
-          <option value="audi">Audi</option>
-          <option value="saab">Saab</option>
-          <option value="mercedes">Mercedes</option>
-          <option value="audi">Volkswagen</option>
-          <option value="audi">Audi</option>
-          <option value="audi">Audi</option>
-          <option value="audi">Audi</option>
-        </select>
-      </mat-form-field>
+  <label for="type">Type:</label>
+  <input type="text" id="type" name="type" class="type" [(ngModel)]="carModel.type" required>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Type</mat-label>
-        <input matInput placeholder="Ex. A5" formControlCars = "Type">
-      </mat-form-field>
-    </div>
-    <div class="row">
-      <mat-form-field appearance="fill" floatLabel="always">
-        <mat-label>Amount</mat-label>
-        <input matInput type="number" class="example-right-align" placeholder="0" formControlCars = "Amount">
-        <span matTextPrefix>€&nbsp;</span>
-      </mat-form-field>
-    </div>
-  </div>
+  <label for="fuel">Fuel:</label>
+  <select id="fuel" name="fuel" class="fuel" [(ngModel)]="carModel.fuel" required>
+    <option value="Diesel">Diesel</option>
+    <option value="Electric">Electric</option>
+    <option value="Hybrid">Hybrid</option>
+    <option value="Gasoline">Gasoline</option>
+  </select>
 
-  <div mat-dialog-actions >
-    <button mat-raised-button>Cancel</button>
-    <button mat-raised-button color="primary">Save</button>
+  <label for="image">Image: </label><br>
+  <input type="file" id="image" name="image" accept=".jpg , png , jpeg" [(ngModel)]="carModel.image" required><br><br>
+  <button class="add" (click)="postImage()">
+     Add car
+  </button> 
   </div>
 </form>
 

@@ -13,7 +13,8 @@ import { MatInputModule } from '@angular/material/input';
 import { AddCarsComponent } from './crud/add-cars/add-cars.component';
 import { AboutComponent } from './crud/about/about.component';
 import { HomeComponent } from './crud/home/home.component';
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -33,11 +34,12 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
 
   ],
 
-  providers: [ ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
