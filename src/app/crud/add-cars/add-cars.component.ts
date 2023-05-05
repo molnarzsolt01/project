@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { CarModel } from '../home/car-model';
+import {CarLinkModel} from "./carLink.model";
 
 @Component({
   selector: 'app-add-cars',
@@ -8,11 +9,17 @@ import { CarModel } from '../home/car-model';
   styleUrls: ['./add-cars.component.scss']
 })
 export class AddCarsComponent implements OnInit {
+  file: File | null = null;
   carModel: any;
-  time = new Date().getTime();
-  username = "debzs7olx";
-  apikey = "776866115828253";
-  apisecret = "Jga8zxQWvAkcNJ6q-T4h6uH5uHY";
+  carLinks: CarLinkModel[] = [{
+    name:'mazda',
+    link: 'https://www.autoklass.ro/cars/car_production_54d27173-c9eb-4bcd-b8db-fdf279d75174/249167.jpg'},
+    {name:'bmw',
+    link: 'https://www.bmw-m.com/content/dam/bmw/marketBMW_M/common/all-models/m-performance-automobile/i7-m70-xdrive/bmw-i7-m70-stage-teaser.png.asset.1681387862051.png'},{
+    name:'mercedes',
+    link: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTccGc7JM6XgGe_8BBtb_GsfBcttJ3rCoTDQw&usqp=CAU'},
+]
+
 
   constructor(private http: HttpClient) {
   }
@@ -28,27 +35,14 @@ export class AddCarsComponent implements OnInit {
   }
 
   addcars() {
+    this.carLinks.map((item)=> {
+      if(item.name === this.carModel.brand){
+        this.carModel.image = item.link
+      }
+    })
     return this.http.post('http://localhost:3000/cars', this.carModel).subscribe(() => {
+      alert('Car Added')
     });
   }
 
-  postImage() {
-    console.log(this.carModel.image)
-    const formData = new FormData();
-    formData.append('file', this.carModel.image);
-    formData.append('timestamp', this.time.toString());
-    formData.append('api_key', this.apikey);
-    formData.append('signature', this.apisecret);
-
-    const url = `https://api.cloudinary.com/v1_1/${this.username}/image/upload`;
-    this.http.post(url, formData).subscribe(
-      response => {
-        console.log('Upload successful', response);
-      },
-      error => {
-        console.error('Upload error', error);
-      }
-    );
-
-  }
 }

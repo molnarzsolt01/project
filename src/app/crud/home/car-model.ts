@@ -3,5 +3,5 @@ export interface CarModel {
   "brand": string,
   "type": string,
   "fuel": string
-  "image?": File
+  "image": string
 }
